@@ -1,5 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
+    //Implementacion de complementos de google-service. La app utiliza los dependias de GoogleService.
+    id ("com.google.gms.google-services")
 }
 
 android {
@@ -34,6 +36,11 @@ android {
 }
 
 dependencies {
+    // Implementar dependencias BOM para que automaticamente se descargue la version compatible de los servicios de firebase.
+    implementation(platform("com.google.firebase:firebase-bom:34.6.0"))
+    // Implementar dependencia de google para servicio especifico de FireBase"
+    // Sin version ya que en controlada por el BOM.
+    implementation("com.google.firebase:firebase-analytics")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
